@@ -1,0 +1,27 @@
+<h1>Music</h1>
+<table id="contents" class="sortable" border="0"></table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://raw.githubusercontent.com/evanplaice/jquery-csv/master/src/jquery.csv.min.js"></script>
+<script>
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var csv = request.responseText;
+      var data = $.csv.toObjects(csv);
+      var html = '<tr><th>Song</th><th>Artist</th></tr>';
+      for(var row in data) {
+        html += '<tr>\r\n';
+        html += '<td><a href="' + data[row]['YouTube Link'] + '" target="_blank">' + data[row]['Song'] + '</a></td><td>' + data[row]['Artist'] + '</td>\r\n';
+        html += '</tr>\r\n';
+      }
+      $('#contents').html(html);
+      
+      // this is a hack because we have to load sorttable after the table is done building.
+      var script = document.createElement('script');
+      script.src = "https://www.kryogenix.org/code/browser/sorttable/sorttable.js";
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
+  };
+  request.open("GET", "https://raw.githubusercontent.com/davidbailey/Notes/master/Music.csv", true);
+  request.send();
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="App" ng-controller="Controller">
+
+<table class="sortable">
+  <tr>
+    <th>Index</th>
+    <th ng-repeat="x in headers">{{ x }}</th>
+  </tr>
+  <tr ng-repeat="x in rows">
+    <td>{{ $index + 1 }}</td>
+    <td ng-repeat="y in x">{{ y }}</td>
+  </tr>
+</table>
+
+</div>
+
+<script>
+var app = angular.module('App', []);
+app.controller('Controller', function($scope, $http) {
+  $http.get("table.json").success(function (response) {
+    $scope.rows = response.table;
+  $scope.headers = new Array();
+  angular.forEach($scope.rows[0], function(value, key) {
+    $scope.headers.push(key);
+  }); 
+  });
+});
+// this is a hack because we have to load sorttable after the table is done building.
+var script = document.createElement('script');
+script.src = "http://www.kryogenix.org/code/browser/sorttable/sorttable.js";
+document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+</body>
+</html>

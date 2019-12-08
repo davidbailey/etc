@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg 
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="256"
+    height="256"
+>
+<!--
+http://thenewcode.com/482/Placing-Text-on-a-Circle-with-SVG
+http://complexdan.com/svg-circleellipse-to-path-converter/
+-->
+<style type="text/css">
+        .st3{clip-path:url(#SVGID_2_);fill:#0066B2;}
+</style>
+    <defs>
+        <path d="M22,128a106,106 0 1,0 212,0a106,106 0 1,0 -212,0" id="PathBailey" />
+        <path d="M44,128a84,84 0 1,1 168,0a84,84 0 1,1 -168,0" id="PathDavid" />
+    </defs>
+
+    <rect width="72" height="72" x="56" y="56" style="fill:#990000" id="cardinal"/>
+    <rect width="72" height="72" x="128" y="56" style="fill:#FFCC00" id="gold"/>
+    <rect width="72" height="72" x="128" y="128" style="fill:#0066B2" id="bavaria-blue"/>
+    <rect width="72" height="72" x="56" y="128" style="fill:#FFFFFF" id="bavaria-white"/>
+    
+    <circle style="stroke:#EEEEEE;stroke-width:48;fill-opacity:0" cx="128" cy="128" r="96" />
+    <circle style="stroke:#000000;stroke-width:1;fill-opacity:0" cx="128" cy="128" r="72" />
+    <circle style="stroke:#000000;stroke-width:1;fill-opacity:0" cx="128" cy="128" r="120" />
+
+
+    <text>
+        <tspan id="db" x="128" y="128" text-anchor="middle" alignment-baseline="middle" style="font-size:96px;font-family:sans-serif">
+        
+        </tspan>
+    </text>
+    <text dx="68">
+        <textPath xlink:href="#PathDavid">
+            <tspan id="David" style="font-size:36px;font-family:sans-serif;fill:#000000;letter-spacing:4px">
+            DAVID
+            </tspan>
+        </textPath>
+    </text>
+    <text dx="90">
+        <textPath xlink:href="#PathBailey">
+            <tspan id="Bailey" style="font-size:36px;font-family:sans-serif;fill:#000000;letter-spacing:8px">
+            BAILEY
+            </tspan>
+        </textPath>
+    </text>
+</svg>
